@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ronald Currency Converter</title>
+</head>
+<body>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <p class="{{ category }}">{{ message }}</p>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    <form action="/" method="POST">
+        <input type="text" name="from" placeholder="From Currency">
+        <input type="text" name="to" placeholder="To Currency">
+        <input type="text" name="amount" placeholder="Amount">
+        <input type="submit" value="Convert">
+    </form>
+</body>
+</html>
