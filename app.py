@@ -12,6 +12,8 @@ def index():
         to_currency = request.form['to']
         amount = request.form['amount']
 
+        
+
 
     return render_template('index.html')
 
