@@ -5,8 +5,13 @@ import json
 app = Flask(__name__)
 app.secret_key = 'mysecretkey'
 
-@app.route('/', )
+@app.route('/', methods=['GET', 'POST'])
 def index():
+     if request.method == 'POST':
+        from_currency = request.form['from']
+        to_currency = request.form['to']
+        amount = request.form['amount']
+
 
     return render_template('index.html')
 
