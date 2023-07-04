@@ -23,6 +23,17 @@ def index():
             flash('Please input a valid number for amount', 'error')
             return render_template('index.html')
         
+        req_url = f'https://api.exchangerate.host/convert?from={from_currency}&to={to_currency}&amount={amount}'
+        response = requests.get(req_url)
+
+        if response.status_code == 200:
+            result = response.json()
+            if result['success']:
+                conversion_result = round(result['result'], 2)
+                flash(f'The converted amount is {conversion_result}', 'success')
+            else:
+                flash('Error in currency conversion. Please try again', 'error')
+
         return render_template('index.html')
 
 if __name__ == '__main__':
